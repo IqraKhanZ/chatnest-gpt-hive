@@ -48,33 +48,33 @@ const ChatRoom = () => {
 
   if (loading) {
     return (
-      <div className="h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex items-center justify-center">
-        <div className="text-white text-xl">Loading chat...</div>
+      <div className="h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex items-center justify-center">
+        <div className="text-green-100 text-xl">Loading chat...</div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex flex-col">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-lg border-b border-white/20 p-4">
+      <div className="bg-emerald-900/60 backdrop-blur-lg border-b border-emerald-700/30 p-4">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl font-bold text-white">ChatNest</h1>
-            <Badge variant="secondary" className="bg-white/20 text-white border-0">
+            <h1 className="text-2xl font-bold text-green-100">ChatNest</h1>
+            <Badge variant="secondary" className="bg-emerald-700/40 text-green-200 border-emerald-600/30">
               <Users className="h-4 w-4 mr-1" />
               Online
             </Badge>
           </div>
           
           <div className="flex items-center space-x-4">
-            <div className="text-white/80 text-sm">
-              Welcome, <span className="font-semibold">{user?.email}</span>
+            <div className="text-green-200/80 text-sm">
+              Welcome, <span className="font-semibold text-green-100">{user?.email}</span>
             </div>
             <Button
               onClick={handleSignOut}
               variant="ghost"
-              className="text-white hover:bg-white/10"
+              className="text-green-200 hover:bg-emerald-800/40 hover:text-green-100"
             >
               <LogOut className="h-4 w-4" />
             </Button>
@@ -84,7 +84,7 @@ const ChatRoom = () => {
 
       {/* Chat Area */}
       <div className="flex-1 flex flex-col max-w-6xl mx-auto w-full p-4">
-        <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-t-2xl border border-white/20 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-emerald-900/20 backdrop-blur-lg rounded-t-2xl border border-emerald-700/30 overflow-hidden flex flex-col">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {messages.map((message) => (
@@ -97,10 +97,10 @@ const ChatRoom = () => {
                 <Avatar className="h-10 w-10 shrink-0">
                   <AvatarFallback className={`text-white text-sm font-semibold ${
                     message.is_gpt 
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600'
                       : message.user_id === user?.id
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500'
+                      ? 'bg-gradient-to-r from-emerald-700 to-green-700'
+                      : 'bg-gradient-to-r from-emerald-600 to-green-600'
                   }`}>
                     {message.is_gpt ? <Bot className="h-5 w-5" /> : 
                      (message.profiles?.username || 'U').charAt(0).toUpperCase()}
@@ -112,10 +112,10 @@ const ChatRoom = () => {
                 }`}>
                   <div className={`inline-block p-4 rounded-2xl shadow-lg ${
                     message.is_gpt
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
+                      ? 'bg-gradient-to-r from-emerald-700 to-teal-700 text-green-50'
                       : message.user_id === user?.id
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                      : 'bg-white/10 text-white backdrop-blur-sm border border-white/20'
+                      ? 'bg-gradient-to-r from-emerald-800 to-green-800 text-green-100'
+                      : 'bg-emerald-800/40 text-green-100 backdrop-blur-sm border border-emerald-700/30'
                   }`}>
                     <div className="flex items-center space-x-2 mb-1">
                       <span className="font-semibold text-sm">
@@ -136,25 +136,25 @@ const ChatRoom = () => {
           </div>
           
           {/* Message Input */}
-          <div className="border-t border-white/20 bg-white/5 p-4">
+          <div className="border-t border-emerald-700/30 bg-emerald-900/20 p-4">
             <form onSubmit={handleSendMessage} className="flex space-x-3">
               <Input
                 type="text"
                 placeholder="Type a message... (use @gpt to chat with AI)"
                 value={currentMessage}
                 onChange={(e) => setCurrentMessage(e.target.value)}
-                className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12"
+                className="flex-1 bg-emerald-800/30 border-emerald-700/40 text-green-100 placeholder:text-green-300/50 h-12 focus:border-emerald-600 focus:ring-emerald-600"
               />
               <Button 
                 type="submit" 
                 disabled={!currentMessage.trim()}
-                className="h-12 px-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0 shadow-lg transition-all duration-200"
+                className="h-12 px-6 bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-600 hover:to-green-600 text-green-100 border-0 shadow-lg transition-all duration-200"
               >
                 <Send className="h-5 w-5" />
               </Button>
             </form>
             
-            <div className="text-xs text-white/50 mt-2 text-center">
+            <div className="text-xs text-green-300/60 mt-2 text-center">
               💡 Tip: Start your message with @gpt to chat with the AI assistant
             </div>
           </div>
