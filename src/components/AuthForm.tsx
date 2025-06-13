@@ -58,14 +58,14 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md p-8 bg-emerald-900/40 backdrop-blur-lg border-emerald-700/30 shadow-2xl">
+    <div className="min-h-screen bg-forest-dark flex items-center justify-center p-4">
+      <Card className="w-full max-w-md p-8 bg-jungle-dark/80 backdrop-blur-lg border-muted/30 shadow-deep">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <MessageCircle className="h-12 w-12 text-green-100 mr-2" />
-            <h1 className="text-4xl font-bold text-green-100">ChatNest</h1>
+            <MessageCircle className="h-12 w-12 text-mint-cream mr-2" />
+            <h1 className="text-4xl font-bold text-mint-cream font-inter">ChatNest</h1>
           </div>
-          <p className="text-green-200/80">
+          <p className="text-cool-gray font-medium">
             {isSignUp ? 'Create your account' : 'Welcome back'}
           </p>
         </div>
@@ -74,38 +74,38 @@ const AuthForm = () => {
           <div className="space-y-4">
             {isSignUp && (
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-300/60" />
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-cool-gray" />
                 <Input
                   type="text"
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="bg-emerald-800/30 border-emerald-700/40 text-green-100 placeholder:text-green-300/50 h-12 pl-10 focus:border-emerald-600 focus:ring-emerald-600"
+                  className="bg-emerald-deep/30 border-muted/40 text-mint-cream placeholder:text-cool-gray h-12 pl-10 focus:border-primary focus:ring-primary font-inter"
                   required={isSignUp}
                 />
               </div>
             )}
             
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-300/60" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-cool-gray" />
               <Input
                 type="email"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-emerald-800/30 border-emerald-700/40 text-green-100 placeholder:text-green-300/50 h-12 pl-10 focus:border-emerald-600 focus:ring-emerald-600"
+                className="bg-emerald-deep/30 border-muted/40 text-mint-cream placeholder:text-cool-gray h-12 pl-10 focus:border-primary focus:ring-primary font-inter"
                 required
               />
             </div>
             
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-300/60" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-cool-gray" />
               <Input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-emerald-800/30 border-emerald-700/40 text-green-100 placeholder:text-green-300/50 h-12 pl-10 focus:border-emerald-600 focus:ring-emerald-600"
+                className="bg-emerald-deep/30 border-muted/40 text-mint-cream placeholder:text-cool-gray h-12 pl-10 focus:border-primary focus:ring-primary font-inter"
                 required
               />
             </div>
@@ -114,7 +114,7 @@ const AuthForm = () => {
           <Button 
             type="submit" 
             disabled={loading}
-            className="w-full h-12 bg-emerald-700 hover:bg-emerald-600 text-green-100 border-0 transition-all duration-200 shadow-lg"
+            className="w-full h-12 bg-emerald-deep hover:bg-accent text-mint-cream border-0 transition-all duration-200 shadow-soft font-inter font-medium"
           >
             {loading ? 'Please wait...' : isSignUp ? 'Create Account' : 'Sign In'}
           </Button>
@@ -123,7 +123,7 @@ const AuthForm = () => {
         <div className="text-center mt-6">
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-green-200/80 hover:text-green-100 transition-colors underline"
+            className="text-cool-gray hover:text-mint-cream transition-colors underline font-inter"
           >
             {isSignUp ? 'Already have an account? Sign in' : 'Need an account? Sign up'}
           </button>

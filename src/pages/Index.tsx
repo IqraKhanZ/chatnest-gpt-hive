@@ -9,8 +9,8 @@ const AppContent = () => {
 
   if (loading) {
     return (
-      <div className="h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex items-center justify-center">
-        <div className="text-green-100 text-xl">Loading...</div>
+      <div className="h-screen bg-forest-dark flex items-center justify-center">
+        <div className="text-mint-cream text-xl font-inter">Loading...</div>
       </div>
     );
   }

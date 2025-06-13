@@ -48,33 +48,33 @@ const ChatRoom = () => {
 
   if (loading) {
     return (
-      <div className="h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex items-center justify-center">
-        <div className="text-green-100 text-xl">Loading chat...</div>
+      <div className="h-screen bg-forest-dark flex items-center justify-center">
+        <div className="text-mint-cream text-xl font-inter">Loading chat...</div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 flex flex-col">
+    <div className="h-screen bg-forest-dark flex flex-col">
       {/* Header */}
-      <div className="bg-emerald-900/60 backdrop-blur-lg border-b border-emerald-700/30 p-4">
+      <div className="bg-jungle-dark/60 backdrop-blur-lg border-b border-muted/30 p-4 shadow-soft">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
           <div className="flex items-center space-x-3">
-            <h1 className="text-2xl font-bold text-green-100">ChatNest</h1>
-            <Badge variant="secondary" className="bg-emerald-700/40 text-green-200 border-emerald-600/30">
+            <h1 className="text-2xl font-bold text-mint-cream font-inter">ChatNest</h1>
+            <Badge variant="secondary" className="bg-emerald-deep/40 text-mint-cream border-muted/30">
               <Users className="h-4 w-4 mr-1" />
               Online
             </Badge>
           </div>
           
           <div className="flex items-center space-x-4">
-            <div className="text-green-200/80 text-sm">
-              Welcome, <span className="font-semibold text-green-100">{user?.email}</span>
+            <div className="text-cool-gray text-sm font-inter">
+              Welcome, <span className="font-semibold text-mint-cream">{user?.email}</span>
             </div>
             <Button
               onClick={handleSignOut}
               variant="ghost"
-              className="text-green-200 hover:bg-emerald-800/40 hover:text-green-100"
+              className="text-cool-gray hover:bg-emerald-deep/40 hover:text-mint-cream"
             >
               <LogOut className="h-4 w-4" />
             </Button>
@@ -84,7 +84,7 @@ const ChatRoom = () => {
 
       {/* Chat Area */}
       <div className="flex-1 flex flex-col max-w-6xl mx-auto w-full p-4">
-        <div className="flex-1 bg-emerald-900/20 backdrop-blur-lg rounded-t-2xl border border-emerald-700/30 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-jungle-dark/20 backdrop-blur-lg rounded-t-2xl border border-muted/30 overflow-hidden flex flex-col shadow-deep">
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {messages.map((message) => (
@@ -97,10 +97,10 @@ const ChatRoom = () => {
                 <Avatar className="h-10 w-10 shrink-0">
                   <AvatarFallback className={`text-white text-sm font-semibold ${
                     message.is_gpt 
-                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600'
+                      ? 'bg-gradient-to-r from-emerald-deep to-primary'
                       : message.user_id === user?.id
-                      ? 'bg-gradient-to-r from-emerald-700 to-green-700'
-                      : 'bg-gradient-to-r from-emerald-600 to-green-600'
+                      ? 'bg-gradient-to-r from-jungle-dark to-emerald-deep'
+                      : 'bg-gradient-to-r from-emerald-deep to-accent'
                   }`}>
                     {message.is_gpt ? <Bot className="h-5 w-5" /> : 
                      (message.profiles?.username || 'U').charAt(0).toUpperCase()}
@@ -110,21 +110,21 @@ const ChatRoom = () => {
                 <div className={`flex-1 max-w-xs md:max-w-md lg:max-w-lg ${
                   message.user_id === user?.id ? 'text-right' : ''
                 }`}>
-                  <div className={`inline-block p-4 rounded-2xl shadow-lg ${
+                  <div className={`inline-block p-4 rounded-2xl shadow-soft ${
                     message.is_gpt
-                      ? 'bg-gradient-to-r from-emerald-700 to-teal-700 text-green-50'
+                      ? 'bg-emerald-deep text-mint-cream'
                       : message.user_id === user?.id
-                      ? 'bg-gradient-to-r from-emerald-800 to-green-800 text-green-100'
-                      : 'bg-emerald-800/40 text-green-100 backdrop-blur-sm border border-emerald-700/30'
+                      ? 'bg-jungle-dark text-mint-cream'
+                      : 'bg-emerald-deep/40 text-mint-cream backdrop-blur-sm border border-muted/30'
                   }`}>
                     <div className="flex items-center space-x-2 mb-1">
-                      <span className="font-semibold text-sm">
+                      <span className="font-semibold text-sm font-inter">
                         {message.is_gpt ? 'ChatGPT' : message.profiles?.username || 'User'}
                       </span>
                       {message.is_gpt && <Bot className="h-4 w-4" />}
                     </div>
-                    <p className="text-sm leading-relaxed">{message.content}</p>
-                    <div className="text-xs opacity-70 mt-1">
+                    <p className="text-sm leading-relaxed font-inter">{message.content}</p>
+                    <div className="text-xs opacity-70 mt-1 font-inter">
                       {formatTime(message.created_at)}
                     </div>
                   </div>
@@ -136,25 +136,25 @@ const ChatRoom = () => {
           </div>
           
           {/* Message Input */}
-          <div className="border-t border-emerald-700/30 bg-emerald-900/20 p-4">
+          <div className="border-t border-muted/30 bg-jungle-dark/20 p-4">
             <form onSubmit={handleSendMessage} className="flex space-x-3">
               <Input
                 type="text"
                 placeholder="Type a message... (use @gpt to chat with AI)"
                 value={currentMessage}
                 onChange={(e) => setCurrentMessage(e.target.value)}
-                className="flex-1 bg-emerald-800/30 border-emerald-700/40 text-green-100 placeholder:text-green-300/50 h-12 focus:border-emerald-600 focus:ring-emerald-600"
+                className="flex-1 bg-emerald-deep/30 border-muted/40 text-mint-cream placeholder:text-cool-gray h-12 focus:border-primary focus:ring-primary font-inter"
               />
               <Button 
                 type="submit" 
                 disabled={!currentMessage.trim()}
-                className="h-12 px-6 bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-600 hover:to-green-600 text-green-100 border-0 shadow-lg transition-all duration-200"
+                className="h-12 px-6 bg-gradient-to-r from-emerald-deep to-primary hover:from-accent hover:to-emerald-deep text-mint-cream border-0 shadow-soft transition-all duration-200"
               >
                 <Send className="h-5 w-5" />
               </Button>
             </form>
             
-            <div className="text-xs text-green-300/60 mt-2 text-center">
+            <div className="text-xs text-cool-gray mt-2 text-center font-inter">
               💡 Tip: Start your message with @gpt to chat with the AI assistant
             </div>
           </div>
